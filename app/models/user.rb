@@ -4,5 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
          
-         belongs_to :book
+         belongs_to :book, optional:true
+         
+         has_one_attached :image
+         
 end
