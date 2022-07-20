@@ -1,2 +1,61 @@
-<h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
+<div class="container px-5 px-sm-0">
+<div class="row">
+    <div class ="col-md-3">
+        <h2>User info</h2>
+        <table class="table">
+            <tbody>
+                <tr> 
+                    <% if @user.profile_image.attached? %>
+                    <%= image_tag book.user.get_profile_image, size: "100x100" %>
+                    <% else %>
+                    <%= image_tag 'no_image', size: "100x100" %>
+                    <% end %>
+                </tr>
+                <tr>
+                    <th>name</th>
+                    <th><%= current_user.name %></th>
+                </tr>
+                <tr>
+                    <th>introduction</th>
+                    <th><%= current_user.introduction %></th>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div class="row">
+            <a class="btn btn-outline-secondary btn-block" href="users/<%= current_user.id%>/edit"><i class="fas fa-user-cog"></i></a>
+        </div>
+    </div>
+    
+<div class="col-md-8 off-set-md-1">
+
+    <h2>Users</h2>
+        <table class="table table-hover table-inverse">
+            <thead>
+                <tr>
+                 <th>image</th>
+                 <th>name</th>
+                 <th colspan="3"></th>
+                </tr>
+            </thead>
+        <% @users.each do |user| %>
+            <tbody>
+                <tr>
+                  <td><% if @user.profile_image.attached? %>
+                    <%= image_tag book.user.get_profile_image, size: "100x100" %>
+                    <% else %>
+                    <%= image_tag 'no_image', size: "100x100" %>
+                    <% end %>
+                  </td>
+                  <td><%= user.name %></td>
+                  <td><%= link_to "Show", user_path(user.id) %></td>
+                </tr>
+            </tbody>
+            <% end %>
+        </table>
+
+</div>
+
+</div>
+</div>
+    
