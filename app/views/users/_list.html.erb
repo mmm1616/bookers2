@@ -3,7 +3,7 @@
             <tbody>
                 <tr> 
                     <% if user.profile_image.attached? %>
-                    <%= image_tag book.user.get_profile_image, size: "100x100" %>
+                    <%= image_tag user.profile_image, size: "100x100" %>
                     <% else %>
                     <%= image_tag 'no_image', size: "100x100" %>
                     <% end %>
@@ -20,9 +20,8 @@
         </table>
         
          <div class="row">
-        　　<% if @user.id == current_user.id %>
-            <a class="btn btn-outline-secondary btn-block" href="/users/<%= current_user.id %>/edit"><i class="fas fa-user-cog"></i></a>
-            <% else %>
-            <a class="btn btn-outline-secondary btn-block" href="/users/<%= current_user.id %>"><i class="fas fa-user-cog"></i></a>
+            <%= link_to edit_user_path(user.id), class: 'btn btn-outline-secondary btn-block' do %>
+            <i class="fas fa-user-cog"></i>
             <% end %>
-        </div>
+         </div>
+        
